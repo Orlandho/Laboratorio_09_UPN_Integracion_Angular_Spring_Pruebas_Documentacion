@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2026-10-17T21:05:00.000Z" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="lab09-arch" name="Arquitectura Consolidada Lab 09">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="browser" value="Navegador Web&#xa;SPA Angular (4200)&#xa;Rutas + QueryParams ?q=" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="interceptor" value="authInterceptor&#xa;Bearer Token Header&#xa;(localStorage.getItem)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="270" y="160" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="service" value="ProductoService&#xa;Centralized manejarError()&#xa;catchError(0, 400, 404, 500)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#dc2626;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="155" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cors" value="CorsConfig.java&#xa;Cross-Origin Filter" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#9333ea;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="150" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="backend" value="Spring Boot REST API (8080)&#xa;/api/productos&#xa;/api/productos/buscar?nombre=&#xa;POST 201 | DELETE 204 | 404" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e7ff;strokeColor=#4f46e5;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="900" y="150" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="MySQL / H2&#xa;Tabla producto" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dcfce7;strokeColor=#16a34a;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="155" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="browser" target="interceptor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="interceptor" target="service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="service" target="cors">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cors" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="backend" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
