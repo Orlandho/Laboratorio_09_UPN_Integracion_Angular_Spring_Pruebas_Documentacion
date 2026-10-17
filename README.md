@@ -27,26 +27,9 @@ Consolidar la integración completa entre **Angular** y **Spring Boot**, fortale
 
 ## 🏗️ 2. Arquitectura de la Solución
 
-El diagrama en formato **Draw.io** se encuentra en [`diagramas/arquitectura-lab09.drawio`](diagramas/arquitectura-lab09.drawio).
-
-```
-Navegador Web (SPA :4200)
-    │  (Rutas /productos?q=...)
-    ▼
-authInterceptor (Adjunta Bearer Token si existe)
-    │
-    ▼
-ProductoService (manejarError + catchError)
-    │  (HTTP REST / JSON)
-    ▼
-CorsConfig.java (Filtro CORS)
-    │
-    ▼
-Spring Boot REST API (:8080)
-    │  (GET, POST 201, PUT 200, DELETE 204, /buscar)
-    ▼
-Spring Data JPA -> H2 In-Memory / MySQL Database
-```
+La arquitectura distribuida desacoplada (Angular SPA con `authInterceptor` y manejo centralizado de errores `HttpErrorResponse` comunicándose vía REST con Spring Boot, JPA y Base de Datos Relacional) está modelada en el archivo nativo editable de **Draw.io**:
+* 📄 **Diagrama Draw.io:** [`diagramas/arquitectura-lab09.drawio`](diagramas/arquitectura-lab09.drawio)
+*(Compatible para visualización y edición en VS Code via "Draw.io Integration" o mediante [app.diagrams.net](https://app.diagrams.net)).*
 
 ---
 
